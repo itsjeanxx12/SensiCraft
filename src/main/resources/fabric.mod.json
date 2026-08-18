@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "sensicraft",
+  "version": "${version}",
+  "name": "SensiCraft",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/sensicraft/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "io.github.jeanxx12.sensicraft.client.SensicraftDataGenerator"
+    ],
+    "client": [
+      "io.github.jeanxx12.sensicraft.client.SensicraftClient"
+    ],
+    "main": [
+      "io.github.jeanxx12.sensicraft.Sensicraft"
+    ]
+  },
+  "mixins": [
+    "sensicraft.mixins.json",
+    {
+      "config": "sensicraft.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
