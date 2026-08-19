@@ -1,0 +1,6 @@
+// 26.2	-999999999-01-01T00:00:00	SensiCraft/Model Definitions
+5ace15fc097cba1399dbda548a6c7c8993c51781 assets/sensicraft/blockstates/rain_sensor.json
+227a33ca049afd74cda164bb5eeac948acb82a18 assets/sensicraft/items/rain_sensor.json
+6a014d0411f93d365a8fa16062a2f54f9cf2871e assets/sensicraft/items/tab_icon.json
+19b5c6779820aa5a79e4e0efba7a345b72151870 assets/sensicraft/models/block/rain_sensor.json
+0ff8cf5c29712815f691b6c3dca6c285c1810cd9 assets/sensicraft/models/item/tab_icon.json

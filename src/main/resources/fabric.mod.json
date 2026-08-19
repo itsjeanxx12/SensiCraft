@@ -11,13 +11,14 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
+      "io.github.jeanxx12.sensicraft.SensicraftDataGenerator",
       "io.github.jeanxx12.sensicraft.client.SensicraftDataGenerator"
-    ],
-    "client": [
-      "io.github.jeanxx12.sensicraft.client.SensicraftClient"
     ],
     "main": [
       "io.github.jeanxx12.sensicraft.Sensicraft"
+    ],
+    "client": [
+      "io.github.jeanxx12.sensicraft.client.SensicraftClient"
     ]
   },
   "mixins": [

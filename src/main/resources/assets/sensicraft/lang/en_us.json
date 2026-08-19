@@ -1,3 +1,4 @@
 {
-  "creativemod.sensicraft" : "SensiCraft Sensors"
+  "creativetab.sensicraft": "SensiCraft",
+  "block.sensicraft.rain_sensor": "Rain Sensor"
 }
