@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "sensicraft:block/rain_sensor"
+    }
+  }
+}
