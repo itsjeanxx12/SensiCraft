@@ -16,8 +16,10 @@ import java.util.function.Function;
 
 public class ModBlocks {
     public static final Block RAIN_SENSOR = registerBlock("rain_sensor",
-            properties -> new RainSensorBlock(properties.strength(1.5F)
-                    .requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            properties -> new RainSensorBlock((properties
+                    .strength(1.5F))
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)));
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, name))));

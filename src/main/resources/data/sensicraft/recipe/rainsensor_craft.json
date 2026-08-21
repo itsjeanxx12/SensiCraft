@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    "RSR",
+    "SSS"
+  ],
+  "key": {
+    "W": "minecraft:water_bucket",
+    "R": "redstone",
+    "S": "smooth_stone_slab"
+  },
+  "result": {
+    "id": "sensicraft:rain_sensor",
+    "count": 1
+  }
+}
