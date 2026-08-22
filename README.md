@@ -11,14 +11,12 @@ SensiCraft is built around simple sensors that can detect things happening aroun
 The Rain Sensor detects when it is raining and gives you a simple way to react to the weather in-game.
 
 * Detects rain
-* Can be crafted and placed in the world
-* Designed to work as part of redstone builds
+* Can be crafted and placed in the world even in survival mode
+* Designed to work as part of redstone builds and automations
 
 ![Rain Sensor Demo](shots/raindemo.png)
 
 ### Crafting
-
-The Rain Sensor has its own crafting recipe.
 
 ![Rain Sensor Recipe](shots/rainsensor_recipe.png)
 
