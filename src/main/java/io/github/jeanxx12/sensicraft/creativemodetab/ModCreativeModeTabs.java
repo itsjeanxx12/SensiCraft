@@ -18,6 +18,7 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModItems.TAB_ICON_ITEM))
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.RAIN_SENSOR);
+                        output.accept(ModBlocks.MOB_SENSOR);
 
                             })
                     .build()));

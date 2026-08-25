@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "sensicraft:block/mob_sensor"
+  }
+}
