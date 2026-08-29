@@ -9,6 +9,14 @@ import net.minecraft.world.level.storage.ValueOutput;
 
 public class MobSensorBE extends BlockEntity {
     private String selectedMob = "None";
+    private int activated = 0;
+    public String activationhandler() {
+        return activated==1 ? "Activated" :"Deactivated";
+    }
+    public void setactivated(int value){
+        activated = value;
+        setChanged();
+    }
     public MobSensorBE(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MOB_SENSOR_BE,pos,state);
     }
@@ -20,14 +28,18 @@ public class MobSensorBE extends BlockEntity {
         setChanged();
     }
     @Override
-    protected void saveAdditional(ValueOutput tag){
+    protected void saveAdditional(ValueOutput tag) {
         super.saveAdditional(tag);
         tag.putString("selectedMob", selectedMob);
+        tag.putInt("activated", activated);
     }
+
     @Override
-    protected void loadAdditional(ValueInput tag){
+    protected void loadAdditional(ValueInput tag) {
         super.loadAdditional(tag);
-        selectedMob= tag.getString("SelectedMob").orElse("None");
+        selectedMob = tag.getString("selectedMob").orElse("None");
+        activated = tag.getInt("activated").orElse(0);
     }
+
 
 }

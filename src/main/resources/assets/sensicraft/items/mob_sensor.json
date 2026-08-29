@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "sensicraft:block/mob_sensor"
+    "model": "sensicraft:block/mob_sensor/mob_sensor_creeper_active"
   }
 }

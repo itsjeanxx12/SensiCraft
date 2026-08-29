@@ -1,7 +1,35 @@
 {
   "variants": {
-    "": {
-      "model": "sensicraft:block/mob_sensor"
+    "mob=none,active=false": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_none_inactive"
+    },
+
+    "mob=creeper,active=true": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_creeper_active"
+    },
+    "mob=creeper,active=false": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_creeper_inactive"
+    },
+
+    "mob=skeleton,active=true": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_skeleton_active"
+    },
+    "mob=skeleton,active=false": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_skeleton_inactive"
+    },
+
+    "mob=zombie,active=true": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_zombie_active"
+    },
+    "mob=zombie,active=false": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_zombie_inactive"
+    },
+
+    "mob=spider,active=true": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_spider_active"
+    },
+    "mob=spider,active=false": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_spider_inactive"
     }
   }
 }
