@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "RCR",
+    "RRR"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "R": "redstone",
+    "C": "comparator",
+    "G": "glass"
+  },
+  "result": {
+    "id": "sensicraft:mob_sensor",
+    "count": 1
+  }
+}
