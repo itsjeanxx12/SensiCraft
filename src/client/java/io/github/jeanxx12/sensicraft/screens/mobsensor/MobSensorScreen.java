@@ -8,7 +8,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import io.github.jeanxx12.sensicraft.blockentity.MobSensorBE;
 import net.minecraft.world.level.block.state.BlockState;
-
+import io.github.jeanxx12.sensicraft.network.MobSensorUpdatePayload;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import java.util.List;
 
 public class MobSensorScreen extends Screen {
@@ -24,8 +25,9 @@ public class MobSensorScreen extends Screen {
     public MobSensorScreen(Component title, MobSensorBE blockEntity, MobSensorBlock block) {
         super(title);
         this.blockEntity = blockEntity;
-        this.selectedMob = blockEntity.getBlockState().getValue(MobSensorBlock.MOB);
-        this.activationvalue = blockEntity.getBlockState().getValue(MobSensorBlock.ACTIVE) ? 1 : 0;
+        BlockState state = blockEntity.getBlockState();
+        this.selectedMob = state.getValue(MobSensorBlock.MOB);
+        this.activationvalue = state.getValue(MobSensorBlock.ACTIVE) ? 1 : 0;
         this.activated = this.activationvalue == 1 ? "Activated" : "Deactivated";
         this.block = block;
     }
@@ -35,9 +37,13 @@ public class MobSensorScreen extends Screen {
         super.init();
 
         Button closeButton = Button.builder(Component.literal("Save and Close"), (btn) -> {
-            BlockPos pos = blockEntity.getBlockPos();
-            BlockState state = minecraft.level.getBlockState(pos);
-            minecraft.level.setBlock(pos, state.setValue(MobSensorBlock.MOB, selectedMob).setValue(MobSensorBlock.ACTIVE, activationvalue == 1), 3);
+            ClientPlayNetworking.send(
+                    new MobSensorUpdatePayload(
+                            blockEntity.getBlockPos(),
+                            selectedMob,
+                            activationvalue == 1
+                    )
+            );
             this.onClose();
         }).bounds(this.width / 2 - 60, this.height / 2 + 110, 120, 20).build();
 
