@@ -30,6 +30,9 @@
     },
     "mob=spider,active=false": {
       "model": "sensicraft:block/mob_sensor/mob_sensor_spider_inactive"
+    },
+    "mob=none,active=true": {
+      "model": "sensicraft:block/mob_sensor/mob_sensor_none_inactive"
     }
   }
 }
