@@ -12,7 +12,7 @@ import net.minecraft.resources.Identifier;
 
 import java.util.stream.Stream;
 
-public record MobSensorUpdatePayload(BlockPos pos, MobSensorBlock.MobType mob, boolean active) implements CustomPacketPayload {
+public record MobSensorUpdatePayload(BlockPos pos, MobSensorBlock.MobType mob, boolean active, double radius) implements CustomPacketPayload {
     public static final Identifier ID=
             Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID,"mob_sensor_update");
     public static final Type<MobSensorUpdatePayload>TYPE =
@@ -25,7 +25,9 @@ public record MobSensorUpdatePayload(BlockPos pos, MobSensorBlock.MobType mob, b
                     payload -> payload.mob().getSerializedName(),
                     ByteBufCodecs.BOOL,
                     MobSensorUpdatePayload::active,
-                    (pos, mobName, active) -> new MobSensorUpdatePayload(pos, MobSensorBlock.MobType.valueOf(mobName.toUpperCase()), active)
+                    ByteBufCodecs.DOUBLE,
+                    MobSensorUpdatePayload::radius,
+                    (pos, mobName, active,radius) -> new MobSensorUpdatePayload(pos, MobSensorBlock.MobType.valueOf(mobName.toUpperCase()), active, radius)
             );
     @Override
     public Type<? extends CustomPacketPayload> type() {

@@ -1,6 +1,7 @@
 package io.github.jeanxx12.sensicraft.screens.mobsensor;
 
 import io.github.jeanxx12.sensicraft.block.MobSensorBlock;
+import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
@@ -21,6 +22,8 @@ public class MobSensorScreen extends Screen {
     private String activated;
     public int activationvalue;
     private final MobSensorBlock block;
+    public int detectionradius;
+    private RadiusSlider radiusSlider;
 
     public MobSensorScreen(Component title, MobSensorBE blockEntity, MobSensorBlock block) {
         super(title);
@@ -30,6 +33,8 @@ public class MobSensorScreen extends Screen {
         this.activationvalue = state.getValue(MobSensorBlock.ACTIVE) ? 1 : 0;
         this.activated = this.activationvalue == 1 ? "Activated" : "Deactivated";
         this.block = block;
+        this.detectionradius = state.getValue(MobSensorBlock.RADIUS);
+
     }
 
     @Override
@@ -41,7 +46,8 @@ public class MobSensorScreen extends Screen {
                     new MobSensorUpdatePayload(
                             blockEntity.getBlockPos(),
                             selectedMob,
-                            activationvalue == 1
+                            activationvalue == 1,
+                            detectionradius
                     )
             );
             this.onClose();
@@ -69,6 +75,15 @@ public class MobSensorScreen extends Screen {
 
         this.addRenderableWidget(activatebutton);
 
+        double sliderValue = (this.detectionradius - 4.0) / 28.0;
+
+        this.radiusSlider = new RadiusSlider(
+                this.width /2-60, this.height /2 +70, 120,20,
+                sliderValue
+        );
+
+        this.addRenderableWidget(this.radiusSlider);
+
         MobDropdown dropdown = new MobDropdown(this.minecraft, 200, 120, this.width / 2 - 100, this.height / 2 - 50, List.of("None", "Skeleton", "Creeper", "Spider", "Zombie"), (mob) -> {
             this.selectedMob = MobSensorBlock.MobType.valueOf(mob.toUpperCase());
             this.current.setMessage(Component.literal("Current: " + mob));
@@ -81,8 +96,37 @@ public class MobSensorScreen extends Screen {
 
     }
 
+
     @Override
     public boolean isPauseScreen() {
         return false;
+    }
+
+    private class RadiusSlider extends AbstractSliderButton {
+
+        public RadiusSlider(int x, int y, int width, int height, double value) {
+            super(
+                    x, y, width, height,
+                    Component.literal("Radius: " + detectionradius),
+                    value
+            );
+        }
+
+        public void updateRadius(double radius){
+            this.value = (radius - 4.0) / 28.0;
+            this.updateMessage();
+        }
+
+        @Override
+        protected void updateMessage(){
+            double radius = 4 + this.value *28.0;
+            this.setMessage(Component.literal("Radius: " + Math.round(radius)));
+        }
+
+        @Override
+        protected void applyValue() {
+            double radius = 4 + this.value *28.0;
+            detectionradius = (int) Math.round(radius);
+        }
     }
 }

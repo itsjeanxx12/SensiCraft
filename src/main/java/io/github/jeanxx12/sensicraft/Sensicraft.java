@@ -49,7 +49,8 @@ public class Sensicraft implements ModInitializer {
                             payload.pos(),
                             level.getBlockState(payload.pos())
                                     .setValue(MobSensorBlock.MOB, mob)
-                                    .setValue(MobSensorBlock.ACTIVE, active),3
+                                    .setValue(MobSensorBlock.ACTIVE, active)
+                                    .setValue(MobSensorBlock.RADIUS, (int) payload.radius()),3
                     );
                     MobSensorBE be = (MobSensorBE) level.getBlockEntity(payload.pos());
 
