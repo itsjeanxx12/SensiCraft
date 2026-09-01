@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "sensicraft:block/player_sensor/player_sensor_active"
+  }
+}

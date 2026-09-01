@@ -13,6 +13,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 public class ModBlockEntities {
     public static final BlockEntityType<MobSensorBE> MOB_SENSOR_BE =
             register("mob_sensor",MobSensorBE::new,ModBlocks.MOB_SENSOR);
+    public static final BlockEntityType<PlayerSensorBE> PLAYER_SENSOR_BE =
+            register("player_sensor",PlayerSensorBE::new,ModBlocks.PLAYER_SENSOR);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,

@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.RAIN_SENSOR);
                         output.accept(ModBlocks.MOB_SENSOR);
+                        output.accept(ModBlocks.PLAYER_SENSOR);
 
                             })
                     .build()));

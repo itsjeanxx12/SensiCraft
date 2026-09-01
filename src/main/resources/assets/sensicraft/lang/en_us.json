@@ -1,5 +1,6 @@
 {
   "creativetab.sensicraft": "SensiCraft",
   "block.sensicraft.rain_sensor": "Rain Sensor",
-  "block.sensicraft.mob_sensor": "Mob Sensor"
+  "block.sensicraft.mob_sensor": "Mob Sensor",
+  "block.sensicraft.player_sensor": "Player Sensor"
 }

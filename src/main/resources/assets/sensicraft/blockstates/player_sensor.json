@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "sensicraft:block/player_sensor/player_sensor_inactive"
+    },
+    "active=true": {
+      "model": "sensicraft:block/player_sensor/player_sensor_active"
+    }
+  }
+}

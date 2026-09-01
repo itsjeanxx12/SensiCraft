@@ -26,6 +26,12 @@ public class ModBlocks {
                     .strength(1.5F))
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)));
+    public static final Block PLAYER_SENSOR = registerBlock("player_sensor",
+            properties -> new PlayerSensorBlock((properties
+                    .strength(1.5F))
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)));
+
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, name))));
