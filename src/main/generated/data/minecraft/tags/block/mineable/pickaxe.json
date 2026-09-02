@@ -1,6 +1,7 @@
 {
   "values": [
     "sensicraft:rain_sensor",
-    "sensicraft:mob_sensor"
+    "sensicraft:mob_sensor",
+    "sensicraft:player_sensor"
   ]
 }
