@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IRI",
+    "RCR",
+    "IRI"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "R": "redstone",
+    "C": "compass"
+  },
+  "result": {
+    "id": "sensicraft:player_sensor",
+    "count": 1
+  }
+}
