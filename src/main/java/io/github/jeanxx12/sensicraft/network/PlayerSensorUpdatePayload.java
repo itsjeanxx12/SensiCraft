@@ -14,7 +14,7 @@ public record PlayerSensorUpdatePayload(BlockPos pos, boolean active, double rad
     public static final Identifier ID=
             Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, "player_sensor_update");
 
-    public static final Type<MobSensorUpdatePayload>TYPE =
+    public static final Type<PlayerSensorUpdatePayload>TYPE =
             new Type<>(ID);
 
     public static final StreamCodec<RegistryFriendlyByteBuf, PlayerSensorUpdatePayload> CODEC=

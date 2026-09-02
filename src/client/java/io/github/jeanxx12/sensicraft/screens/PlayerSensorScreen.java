@@ -2,11 +2,14 @@ package io.github.jeanxx12.sensicraft.screens;
 
 import io.github.jeanxx12.sensicraft.block.PlayerSensorBlock;
 import io.github.jeanxx12.sensicraft.blockentity.PlayerSensorBE;
+import io.github.jeanxx12.sensicraft.network.PlayerSensorUpdatePayload;
 import io.github.jeanxx12.sensicraft.screens.mobsensor.MobSensorScreen;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.client.gui.components.AbstractSliderButton;
@@ -35,6 +38,12 @@ public class PlayerSensorScreen extends Screen {
         super.init();
 
         Button closeButton = Button.builder(Component.literal("Save and Close"), (btn) -> {
+            ClientPlayNetworking.send(new PlayerSensorUpdatePayload(
+                    be.getBlockPos(),
+                    activationvalue==1,
+                    detectionradius
+
+            ));
             this.onClose();
         }).bounds(this.width/2-60,this.height/2+30,120,20).build();
         this.addRenderableWidget(closeButton);
