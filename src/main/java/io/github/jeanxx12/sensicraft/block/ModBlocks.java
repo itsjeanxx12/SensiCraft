@@ -32,6 +32,12 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)));
 
+    public static final Block TEMP_SENSOR = registerBlock("temp_sensor",
+            properties -> new TempSensorBlock((properties
+                    .strength(1.5F))
+                    .sound(SoundType.STONE)
+                    .requiresCorrectToolForDrops()));
+
 
     private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function) {
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, name))));

@@ -3,18 +3,23 @@ package io.github.jeanxx12.sensicraft;
 import io.github.jeanxx12.sensicraft.block.MobSensorBlock;
 import io.github.jeanxx12.sensicraft.block.ModBlocks;
 import io.github.jeanxx12.sensicraft.block.PlayerSensorBlock;
+import io.github.jeanxx12.sensicraft.block.TempSensorBlock;
 import io.github.jeanxx12.sensicraft.blockentity.MobSensorBE;
 import io.github.jeanxx12.sensicraft.blockentity.ModBlockEntities;
 import io.github.jeanxx12.sensicraft.blockentity.PlayerSensorBE;
+import io.github.jeanxx12.sensicraft.blockentity.TempSensorBE;
 import io.github.jeanxx12.sensicraft.creativemodetab.ModCreativeModeTabs;
 import io.github.jeanxx12.sensicraft.item.ModItems;
 import io.github.jeanxx12.sensicraft.network.MobSensorUpdatePayload;
 import io.github.jeanxx12.sensicraft.network.PlayerSensorUpdatePayload;
+import io.github.jeanxx12.sensicraft.network.TempSensorUpdatePayload;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.world.entity.ai.sensing.MobSensor;
 import net.minecraft.world.entity.player.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Sensicraft implements ModInitializer {
     public static final String MOD_ID = "sensicraft";
@@ -89,5 +94,32 @@ public class Sensicraft implements ModInitializer {
                     }
                 }
         );
+        ServerPlayNetworking.registerGlobalReceiver(
+                TempSensorUpdatePayload.TYPE,(payload, context) -> {
+                    var player = context.player();
+                    var level = player.level();
+                    if (!level.isLoaded(payload.pos())) {
+                        return;
+                    }if (level.getBlockState(payload.pos()).getBlock() != ModBlocks.TEMP_SENSOR) {
+                        return;
+                    }if (player.distanceToSqr(
+                            payload.pos().getX() +0.5,
+                            payload.pos().getY()+0.5,
+                            payload.pos().getZ() +0.5
+                    )>64){return;}
+                    boolean active = payload.active();
+                    level.setBlock(
+                            payload.pos(),
+                            level.getBlockState(payload.pos())
+                                    .setValue(TempSensorBlock.ACTIVE, active)
+                                    .setValue(TempSensorBlock.THRESHOLD, (int) payload.threshold()),3
+                    );
+                    TempSensorBE be = (TempSensorBE) level.getBlockEntity(payload.pos());
+                    if (be !=null){
+                        be.setChanged();
+                    }
+                }
+        );
     }
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 }
