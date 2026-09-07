@@ -3,8 +3,11 @@ package io.github.jeanxx12.sensicraft.client;
 import io.github.jeanxx12.sensicraft.block.MobSensorBlock;
 import io.github.jeanxx12.sensicraft.block.ModBlocks;
 import io.github.jeanxx12.sensicraft.block.PlayerSensorBlock;
+import io.github.jeanxx12.sensicraft.block.TempSensorBlock;
 import io.github.jeanxx12.sensicraft.blockentity.PlayerSensorBE;
+import io.github.jeanxx12.sensicraft.blockentity.TempSensorBE;
 import io.github.jeanxx12.sensicraft.screens.PlayerSensorScreen;
+import io.github.jeanxx12.sensicraft.screens.TempSensorScreen;
 import io.github.jeanxx12.sensicraft.screens.mobsensor.MobSensorScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -43,6 +46,21 @@ public class SensicraftClient implements ClientModInitializer {
                                     Component.literal("Player Sensor"),
                                     playerSensorBE,
                                     playerSensorBlock
+                            )
+                    );
+                }
+                return InteractionResult.SUCCESS;
+            }
+            if (level.isClientSide() && level.getBlockState(hitResult.getBlockPos()).getBlock() == ModBlocks.TEMP_SENSOR) {
+                TempSensorBE tempSensorBE = (TempSensorBE) level.getBlockEntity(hitResult.getBlockPos());
+                TempSensorBlock tempSensorBlock = (TempSensorBlock) level.getBlockState(hitResult.getBlockPos()).getBlock();
+
+                if (tempSensorBE != null) {
+                    Minecraft.getInstance().setScreenAndShow(
+                            new TempSensorScreen(
+                                    Component.literal("Temperature Sensor"),
+                                    tempSensorBE,
+                                    tempSensorBlock
                             )
                     );
                 }

@@ -1,6 +1,7 @@
 package io.github.jeanxx12.sensicraft.block;
 
 import io.github.jeanxx12.sensicraft.Sensicraft;
+import io.github.jeanxx12.sensicraft.blockentity.TempSensorBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -8,13 +9,16 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import org.jspecify.annotations.Nullable;
 
-public class TempSensorBlock extends Block {
+public class TempSensorBlock extends Block implements EntityBlock {
 
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
     public static final IntegerProperty TEMPERATURE = IntegerProperty.create("temperature", 0, 55);
@@ -55,7 +59,6 @@ public class TempSensorBlock extends Block {
         BlockState newState = state.setValue(TEMPERATURE, storedTemperature);
         level.setBlock(pos, newState, 3);
         level.updateNeighborsAt(pos, this);
-        Sensicraft.LOGGER.info("Sensor Temp: " + tempC);
     }
 
     @Override
@@ -75,5 +78,10 @@ public class TempSensorBlock extends Block {
             return 15;
         }
         return 0;
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new TempSensorBE(pos,state);
     }
 }

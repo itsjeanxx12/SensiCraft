@@ -39,6 +39,10 @@ public class Sensicraft implements ModInitializer {
                 PlayerSensorUpdatePayload.TYPE,
                 PlayerSensorUpdatePayload.CODEC
         );
+        PayloadTypeRegistry.serverboundPlay().register(
+                TempSensorUpdatePayload.TYPE,
+                TempSensorUpdatePayload.CODEC
+        );
         ServerPlayNetworking.registerGlobalReceiver(
                 MobSensorUpdatePayload.TYPE,
                 (payload, context) -> {

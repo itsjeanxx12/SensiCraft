@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 public record TempSensorUpdatePayload(BlockPos pos, boolean active, int threshold) implements CustomPacketPayload {
 
     public static final Identifier ID=
-            Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, "player_sensor_update");
+            Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, "temp_sensor_update");
 
     public static final Type<TempSensorUpdatePayload>TYPE =
             new Type<>(ID);
