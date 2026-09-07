@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "temp_sensor_active_normal",
-		"particle": "temp_sensor_active_normal"
+		"0": "sensicraft:block/temp_sensor/temp_sensor_active_normal",
+		"particle": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
 	},
 	"elements": [
 		{

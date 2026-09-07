@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+  }
+}

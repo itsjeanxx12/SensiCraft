@@ -1,0 +1,175 @@
+{
+  "variants": {
+    "active=true,temperature=0": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=1": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=2": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=3": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=4": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=5": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=6": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=7": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=8": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=9": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=10": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=11": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=12": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=13": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_cold"
+    },
+    "active=true,temperature=14": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=15": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=16": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=17": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=18": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=19": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=20": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=21": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=22": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=23": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=24": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=25": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=26": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=27": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_normal"
+    },
+    "active=true,temperature=28": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=29": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=30": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=31": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=32": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=33": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=34": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=35": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=36": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=37": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=38": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=39": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=40": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=41": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_warm"
+    },
+    "active=true,temperature=42": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=43": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=44": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=45": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=46": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=47": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=48": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=49": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=50": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=51": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=52": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=53": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=54": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=true,temperature=55": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_active_hot"
+    },
+    "active=false": {
+      "model": "sensicraft:block/temp_sensor/temp_sensor_inactive"
+    }
+  }
+}
