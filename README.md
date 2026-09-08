@@ -47,6 +47,18 @@ The Rain Sensor detects when it is raining and can be used as part of redstone b
 - Outputs a redstone signal while it is raining
 - Can be crafted and used in survival
 
+### Temperature Sensor
+
+![Temperature Sensors](shots/tempsensors.png)
+
+The Temperature Sensor detects the temperature of its surroundings and outputs a redstone signal based on the configured temperature threshold.
+
+- Detects temperatures from **-15°C to 40°C**
+- Configure a temperature threshold
+- Outputs a redstone signal when the measured temperature reaches the threshold
+- Continuously measures the surrounding temperature
+- Can be crafted and used in survival
+
 ## Crafting
 
 ### Player Sensor
@@ -55,26 +67,29 @@ The Rain Sensor detects when it is raining and can be used as part of redstone b
 
 ### Mob Sensor
 
-The Mob Sensor is designed to be a more advanced redstone component, requiring a comparator, redstone, iron, and glass.
-
 ![Mob Sensor Recipe](shots/mobsensor_recipe.png)
 
 ### Rain Sensor
 
 ![Rain Sensor Recipe](shots/rainsensor_recipe.png)
 
+### Temperature Sensor
+
+![Temperature Sensor Recipe](shots/tempsensor_recipe.png)
+
 ## Development
 
 SensiCraft is actively being developed. The goal is to add more useful sensors while keeping them simple to use and fun to build with.
-For the beta, i wanna add 2 more sensors, and variable redstone output based on entity distance.
+
+For the beta, **1 more sensor** is left, this one with variable redstone output based on entity distance.
+And in the first actual release, every sensor will have the option to output variable redstone.
 
 ### Current Sensors
 
-| Sensor | Detects |
-|---|---|
-| **Player Sensor** | Nearby players |
-| **Mob Sensor** | Selected mobs |
-| **Rain Sensor** | Rain |
+- **Rain Sensor**
+- **Mob Sensor**
+- **Player Sensor**
+- **Temperature Sensor**
 
 More sensors are planned for future updates.
 
