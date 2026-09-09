@@ -10,7 +10,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 
-public record TempSensorUpdatePayload(BlockPos pos, boolean active, int threshold) implements CustomPacketPayload {
+public record TempSensorUpdatePayload(BlockPos pos, boolean active, int threshold,boolean celsius) implements CustomPacketPayload {
 
     public static final Identifier ID=
             Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, "temp_sensor_update");
@@ -26,7 +26,9 @@ public record TempSensorUpdatePayload(BlockPos pos, boolean active, int threshol
                     TempSensorUpdatePayload::active,
                     ByteBufCodecs.INT,
                     TempSensorUpdatePayload::threshold,
-                    (pos,active,threshold) -> new TempSensorUpdatePayload(pos,active,threshold)
+                    ByteBufCodecs.BOOL,
+                    TempSensorUpdatePayload::celsius,
+                    (pos,active,threshold,celsius) -> new TempSensorUpdatePayload(pos,active,threshold,celsius)
             );
 
     @Override

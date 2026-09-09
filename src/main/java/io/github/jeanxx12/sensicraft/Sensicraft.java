@@ -112,11 +112,13 @@ public class Sensicraft implements ModInitializer {
                             payload.pos().getZ() +0.5
                     )>64){return;}
                     boolean active = payload.active();
+                    boolean celsius = payload.celsius();
                     level.setBlock(
                             payload.pos(),
                             level.getBlockState(payload.pos())
                                     .setValue(TempSensorBlock.ACTIVE, active)
-                                    .setValue(TempSensorBlock.THRESHOLD, (int) payload.threshold()),3
+                                    .setValue(TempSensorBlock.THRESHOLD, (int) payload.threshold())
+                                    .setValue(TempSensorBlock.CELSIUS, celsius),3
                     );
                     TempSensorBE be = (TempSensorBE) level.getBlockEntity(payload.pos());
                     if (be !=null){
