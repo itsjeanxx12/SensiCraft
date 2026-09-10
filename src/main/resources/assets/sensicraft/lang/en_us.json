@@ -3,5 +3,6 @@
   "block.sensicraft.rain_sensor": "Rain Sensor",
   "block.sensicraft.mob_sensor": "Mob Sensor",
   "block.sensicraft.player_sensor": "Player Sensor",
-  "block.sensicraft.temp_sensor": "Temperature Sensor"
+  "block.sensicraft.temp_sensor": "Temperature Sensor",
+  "block.sensicraft.block_sensor": "Block Sensor"
 }

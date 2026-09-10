@@ -21,7 +21,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MOB_SENSOR);
                         output.accept(ModBlocks.PLAYER_SENSOR);
                         output.accept(ModBlocks.TEMP_SENSOR);
-
+                        output.accept(ModBlocks.BLOCK_SENSOR);
                             })
                     .build()));
     public static void init() {
