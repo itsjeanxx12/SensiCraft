@@ -17,6 +17,8 @@ public class ModBlockEntities {
             register("player_sensor",PlayerSensorBE::new,ModBlocks.PLAYER_SENSOR);
     public static final BlockEntityType<TempSensorBE> TEMP_SENSOR_BE =
             register("temp_sensor", TempSensorBE::new,ModBlocks.TEMP_SENSOR);
+    public static final BlockEntityType<?> BLOCK_SENSOR_BE =
+            register("block_sensor",BlockSensorBE::new,ModBlocks.BLOCK_SENSOR);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,
