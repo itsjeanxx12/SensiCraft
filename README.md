@@ -59,6 +59,17 @@ The Temperature Sensor detects the temperature of its surroundings and outputs a
 - Continuously measures the surrounding temperature
 - Can be crafted and used in survival
 
+### Block Sensor
+
+The Block Sensor counts a selected block type within its configurable detection radius and outputs a redstone signal based on the number of matching blocks.
+
+- Select a block to detect by entering its ID in the in-game GUI, such as `minecraft:stone`
+- Configure the detection radius from 4 to 32 blocks
+- Toggle the sensor on and off
+- Outputs one redstone signal level per matching block, up to 15
+- Checks for matching blocks once per second
+- Saves the selected block across world reloads
+
 ## Crafting
 
 ### Player Sensor
@@ -90,6 +101,7 @@ And in the first actual release, every sensor will have the option to output var
 - **Mob Sensor**
 - **Player Sensor**
 - **Temperature Sensor**
+- **Block Sensor**
 
 More sensors are planned for future updates.
 

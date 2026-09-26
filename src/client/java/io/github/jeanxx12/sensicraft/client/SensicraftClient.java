@@ -1,6 +1,9 @@
 package io.github.jeanxx12.sensicraft.client;
 
 import io.github.jeanxx12.sensicraft.block.MobSensorBlock;
+import io.github.jeanxx12.sensicraft.block.BlockSensorBlock;
+import io.github.jeanxx12.sensicraft.blockentity.BlockSensorBE;
+import io.github.jeanxx12.sensicraft.screens.BlockSensorScreen;
 import io.github.jeanxx12.sensicraft.block.ModBlocks;
 import io.github.jeanxx12.sensicraft.block.PlayerSensorBlock;
 import io.github.jeanxx12.sensicraft.block.TempSensorBlock;
@@ -21,6 +24,13 @@ public class SensicraftClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
+            if (level.isClientSide() && level.getBlockState(hitResult.getBlockPos()).getBlock() == ModBlocks.BLOCK_SENSOR) {
+                if (level.getBlockEntity(hitResult.getBlockPos()) instanceof BlockSensorBE blockEntity) {
+                    Minecraft.getInstance().setScreenAndShow(new BlockSensorScreen(
+                            Component.literal("Block Sensor"), blockEntity, (BlockSensorBlock) ModBlocks.BLOCK_SENSOR));
+                }
+                return InteractionResult.SUCCESS;
+            }
             if (level.isClientSide() && level.getBlockState(hitResult.getBlockPos()).getBlock() == ModBlocks.MOB_SENSOR) {
                 MobSensorBE blockEntity = (MobSensorBE) level.getBlockEntity(hitResult.getBlockPos());
                 MobSensorBlock block = (MobSensorBlock) level.getBlockState(hitResult.getBlockPos()).getBlock();

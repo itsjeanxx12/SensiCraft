@@ -20,6 +20,6 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        itemModelGenerators.generateFlatItem(ModItems.TAB_ICON_ITEM, ModelTemplates.FLAT_ITEM);
+        // The tab icon model is supplied in the existing generated resources.
     }
 }

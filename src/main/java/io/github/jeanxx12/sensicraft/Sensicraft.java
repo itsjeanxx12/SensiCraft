@@ -1,16 +1,21 @@
 package io.github.jeanxx12.sensicraft;
 
 import io.github.jeanxx12.sensicraft.block.MobSensorBlock;
+import io.github.jeanxx12.sensicraft.block.BlockSensorBlock;
 import io.github.jeanxx12.sensicraft.block.ModBlocks;
 import io.github.jeanxx12.sensicraft.block.PlayerSensorBlock;
 import io.github.jeanxx12.sensicraft.block.TempSensorBlock;
 import io.github.jeanxx12.sensicraft.blockentity.MobSensorBE;
+import io.github.jeanxx12.sensicraft.blockentity.BlockSensorBE;
 import io.github.jeanxx12.sensicraft.blockentity.ModBlockEntities;
 import io.github.jeanxx12.sensicraft.blockentity.PlayerSensorBE;
 import io.github.jeanxx12.sensicraft.blockentity.TempSensorBE;
 import io.github.jeanxx12.sensicraft.creativemodetab.ModCreativeModeTabs;
 import io.github.jeanxx12.sensicraft.item.ModItems;
 import io.github.jeanxx12.sensicraft.network.MobSensorUpdatePayload;
+import io.github.jeanxx12.sensicraft.network.BlockSensorUpdatePayload;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import io.github.jeanxx12.sensicraft.network.PlayerSensorUpdatePayload;
 import io.github.jeanxx12.sensicraft.network.TempSensorUpdatePayload;
 import net.fabricmc.api.ModInitializer;
@@ -43,6 +48,23 @@ public class Sensicraft implements ModInitializer {
                 TempSensorUpdatePayload.TYPE,
                 TempSensorUpdatePayload.CODEC
         );
+        PayloadTypeRegistry.serverboundPlay().register(BlockSensorUpdatePayload.TYPE, BlockSensorUpdatePayload.CODEC);
+        ServerPlayNetworking.registerGlobalReceiver(BlockSensorUpdatePayload.TYPE, (payload, context) -> {
+            var player = context.player();
+            var level = player.level();
+            if (!level.isLoaded(payload.pos()) || level.getBlockState(payload.pos()).getBlock() != ModBlocks.BLOCK_SENSOR
+                    || player.distanceToSqr(payload.pos().getX() + 0.5, payload.pos().getY() + 0.5,
+                    payload.pos().getZ() + 0.5) > 64 || payload.radius() < 4 || payload.radius() > 32) return;
+            Identifier id = Identifier.tryParse(payload.targetBlock());
+            if (id == null || !BuiltInRegistries.BLOCK.containsKey(id)) return;
+            if (!(level.getBlockEntity(payload.pos()) instanceof BlockSensorBE sensor)) return;
+            sensor.setTargetBlock(id.toString());
+            level.setBlock(payload.pos(), level.getBlockState(payload.pos())
+                    .setValue(BlockSensorBlock.ACTIVE, payload.active())
+                    .setValue(BlockSensorBlock.RADIUS, payload.radius()), 3);
+            level.sendBlockUpdated(payload.pos(), level.getBlockState(payload.pos()), level.getBlockState(payload.pos()), 3);
+            level.scheduleTick(payload.pos(), ModBlocks.BLOCK_SENSOR, 1);
+        });
         ServerPlayNetworking.registerGlobalReceiver(
                 MobSensorUpdatePayload.TYPE,
                 (payload, context) -> {

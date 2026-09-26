@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "active=false": {"model": "sensicraft:block/block_sensor/block_sensor_inactive"},
+    "active=true": {"model": "sensicraft:block/block_sensor/block_sensor_active"}
+  }
+}
