@@ -1,6 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["IGI", "RCR", "IRI"],
+  "pattern": ["IGI",
+    "RCR",
+    "IRI"],
   "key": {
     "I": "minecraft:iron_ingot",
     "G": "minecraft:glass",

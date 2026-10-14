@@ -3,6 +3,7 @@
     "sensicraft:rain_sensor",
     "sensicraft:mob_sensor",
     "sensicraft:player_sensor",
-    "sensicraft:temp_sensor"
+    "sensicraft:temp_sensor",
+    "sensicraft:block_sensor"
   ]
 }
