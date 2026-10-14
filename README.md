@@ -61,9 +61,11 @@ The Temperature Sensor detects the temperature of its surroundings and outputs a
 
 ### Block Sensor
 
+![Block Sensor](shots/blocksensor_max.png)
+
 The Block Sensor counts a selected block type within its configurable detection radius and outputs a redstone signal based on the number of matching blocks.
 
-- Select a block to detect by entering its ID in the in-game GUI, such as `minecraft:stone`
+- Select a block to detect by entering its ID in the in-game GUI, such as `minecraft:gold_block`
 - Configure the detection radius from 4 to 32 blocks
 - Toggle the sensor on and off
 - Outputs one redstone signal level per matching block, up to 15
@@ -88,12 +90,14 @@ The Block Sensor counts a selected block type within its configurable detection 
 
 ![Temperature Sensor Recipe](shots/tempsensor_recipe.png)
 
+### Block Sensor
+
+![Block Sensor Recipe](shots/blocksensor_craft.png)
+
 ## Development
 
 SensiCraft is actively being developed. The goal is to add more useful sensors while keeping them simple to use and fun to build with.
-
-For the beta, **1 more sensor** is left, this one with variable redstone output based on entity distance.
-And in the first actual release, every sensor will have the option to output variable redstone.
+In the first actual release, every sensor will have the option to output variable redstone. I am also aiming for 10 useful sensors.
 
 ### Current Sensors
 
@@ -107,7 +111,7 @@ More sensors are planned for future updates.
 
 ## Current Version
 
-SensiCraft is currently in **Alpha**. v1.0.0-alpha
+SensiCraft is currently in **Beta**. v1.0.0-beta
 
 During this stage, features and mechanics may change as the mod continues to develop. Bugs and unfinished features are expected.
 
