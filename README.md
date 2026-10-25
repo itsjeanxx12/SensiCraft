@@ -17,18 +17,17 @@ SensiCraft lets you detect things happening in your Minecraft world and turn the
 The Player Sensor detects nearby players and outputs a redstone signal when a player is detected.
 
 - Detects nearby players
-- Outputs a redstone signal when a player is detected
 - Can be crafted and used in survival
 - Designed for redstone builds and automation
-
+### Detection Modes:
+- Digital: Outputs full redstone output when players in radius
+- Analog: Outputs based on player distance
+- Count: Outputs based on player counts in radius
 ### Mob Sensor
 
 ![SensiCraft Mob Sensors](shots/mobsensors+demo.png)
 
 The Mob Sensor detects specific mobs within its configurable detection radius and outputs a redstone signal when the selected mob is nearby.
-
-![Mob Sensor GUI](shots/mobsensor_gui.png)
-
 - Detects **Creepers, Skeletons, Zombies, and Spiders**
 - Select the mob to detect through an in-game GUI
 - Configure the detection radius
