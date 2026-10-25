@@ -117,6 +117,9 @@ public class PlayerSensorScreen extends Screen {
             );
             this.updateMessage();
         }
+        private void snapToMode() {
+            this.value = Math.round(this.value * 2) / 2.0;
+        }
         @Override
         protected void updateMessage() {
             String mode = switch ((int) Math.round(this.value * 2)) {
@@ -129,7 +132,9 @@ public class PlayerSensorScreen extends Screen {
         }
         @Override
         protected void applyValue() {
+            snapToMode();
             detectionmode = (int) Math.round(this.value * 2);
+            updateMessage();
         }
     }
 

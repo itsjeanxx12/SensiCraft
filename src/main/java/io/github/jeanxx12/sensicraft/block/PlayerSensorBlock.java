@@ -22,7 +22,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
-
 import java.util.List;
 
 public class PlayerSensorBlock extends BaseEntityBlock {
@@ -83,14 +82,21 @@ public class PlayerSensorBlock extends BaseEntityBlock {
         List<Player> players = world.getEntitiesOfClass(
                 Player.class, detectionArea
         );
-        if (players.isEmpty()) {
-            return 0;
+        if (state.getValue(DMODE) == 0) {
+            return players.isEmpty() ? 0 : 15;
+        } else if (state.getValue(DMODE) == 1) {
+            if (players.isEmpty()) {
+                return 0;
+            }
+            double distance = players.stream()
+                    .mapToDouble(player ->
+                            Math.sqrt(player.distanceToSqr(Vec3.atCenterOf(pos))))
+                    .min()
+                    .orElse(radius);
+            return Math.max(1, Math.min(15,
+                    (int) Math.ceil(15 * (1 - distance / radius))));
+        } else if (state.getValue(DMODE) == 2) {
+            return Math.min(15, players.size());
         }
-        Player player = players.get(0);
-        double distance = Math.sqrt(
-                player.distanceToSqr(Vec3.atCenterOf(pos))
-        );
-        return Math.max(1, Math.min(15,
-                (int) Math.ceil(15 * (1 - distance / radius))
-        ));
+        return 0;
     }}
