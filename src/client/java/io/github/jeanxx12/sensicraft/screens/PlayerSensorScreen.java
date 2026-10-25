@@ -22,6 +22,8 @@ public class PlayerSensorScreen extends Screen {
     private StringWidget activation;
     public int detectionradius;
     public RadiusSlider radiusSlider;
+    public int detectionmode;
+    public ModeSlider modeSlider;
 
     public PlayerSensorScreen(Component title, PlayerSensorBE be, PlayerSensorBlock block) {
         super(title);
@@ -31,6 +33,7 @@ public class PlayerSensorScreen extends Screen {
         this.detectionradius = state.getValue(PlayerSensorBlock.RADIUS);
         this.activationvalue = state.getValue(PlayerSensorBlock.ACTIVE) ? 1:0;
         this.activated = this.activationvalue == 1 ? "Activated" : "Deactivated";
+        this.detectionmode = state.getValue(PlayerSensorBlock.DMODE);
     }
 
     @Override
@@ -41,7 +44,8 @@ public class PlayerSensorScreen extends Screen {
             ClientPlayNetworking.send(new PlayerSensorUpdatePayload(
                     be.getBlockPos(),
                     activationvalue==1,
-                    detectionradius
+                    detectionradius,
+                    detectionmode
 
             ));
             this.onClose();
@@ -69,7 +73,12 @@ public class PlayerSensorScreen extends Screen {
         this.radiusSlider = new RadiusSlider(
                 this.width/2-60, this.height/2+50, 120,20,sliderValue
         );
+        double modesliderValue = detectionmode / 2.0;
         this.addRenderableWidget(radiusSlider);
+        this.modeSlider = new ModeSlider(
+                this.width/2-60, this.height/2+70,120,20,modesliderValue
+        );
+        this.addRenderableWidget(modeSlider);
     }
     private class RadiusSlider extends AbstractSliderButton {
 
@@ -96,6 +105,31 @@ public class PlayerSensorScreen extends Screen {
         protected void applyValue() {
             double radius = 4 + this.value *28.0;
             detectionradius = (int) Math.round(radius);
+        }
+    }
+    private class ModeSlider extends AbstractSliderButton {
+
+        public ModeSlider(int x, int y, int width, int height, double value) {
+            super(
+                    x, y, width, height,
+                    Component.literal(""),
+                    value
+            );
+            this.updateMessage();
+        }
+        @Override
+        protected void updateMessage() {
+            String mode = switch ((int) Math.round(this.value * 2)) {
+                case 0 -> "Digital";
+                case 1 -> "Analog";
+                case 2 -> "Count";
+                default -> "Digital";
+            };
+            this.setMessage(Component.literal("Mode: " + mode));
+        }
+        @Override
+        protected void applyValue() {
+            detectionmode = (int) Math.round(this.value * 2);
         }
     }
 

@@ -9,7 +9,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 
-public record PlayerSensorUpdatePayload(BlockPos pos, boolean active, double radius) implements CustomPacketPayload {
+public record PlayerSensorUpdatePayload(BlockPos pos, boolean active, double radius, int dmode) implements CustomPacketPayload {
 
     public static final Identifier ID=
             Identifier.fromNamespaceAndPath(Sensicraft.MOD_ID, "player_sensor_update");
@@ -25,7 +25,9 @@ public record PlayerSensorUpdatePayload(BlockPos pos, boolean active, double rad
                     PlayerSensorUpdatePayload::active,
                     ByteBufCodecs.DOUBLE,
                     PlayerSensorUpdatePayload::radius,
-                    (pos,active,radius) -> new PlayerSensorUpdatePayload(pos,active,radius)
+                    ByteBufCodecs.INT,
+                    PlayerSensorUpdatePayload::dmode,
+                    (pos,active,radius,dmode) -> new PlayerSensorUpdatePayload(pos,active,radius,dmode)
             );
 
     @Override

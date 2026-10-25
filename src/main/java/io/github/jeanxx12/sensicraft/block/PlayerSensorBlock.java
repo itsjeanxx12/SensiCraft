@@ -20,7 +20,10 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
+
+import java.util.List;
 
 public class PlayerSensorBlock extends BaseEntityBlock {
     public PlayerSensorBlock(Properties properties) {
@@ -28,6 +31,7 @@ public class PlayerSensorBlock extends BaseEntityBlock {
         registerDefaultState(
                 stateDefinition.any().setValue(ACTIVE, false)
                         .setValue(RADIUS,8)
+                        .setValue(DMODE, 0)
         );
     }
 
@@ -48,9 +52,10 @@ public class PlayerSensorBlock extends BaseEntityBlock {
 
     public static final IntegerProperty RADIUS = IntegerProperty.create("radius", 4, 32);
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+    public static final IntegerProperty DMODE = IntegerProperty.create("dmode", 0 , 2);
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState> builder) {
-        builder.add(ACTIVE,RADIUS);
+        builder.add(ACTIVE,RADIUS,DMODE);
     }
 
     @Override
@@ -66,20 +71,26 @@ public class PlayerSensorBlock extends BaseEntityBlock {
         }
     }
     @Override
-    protected int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction){
-        if (!(level instanceof Level world)){
+    protected int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        if (!(level instanceof Level world)) {
             return 0;
         }
-        if (!state.getValue(ACTIVE)){
+        if (!state.getValue(ACTIVE)) {
             return 0;
         }
         double radius = state.getValue(RADIUS);
-        AABB detectionArea =new AABB(pos).inflate(radius);
-        if (world.getEntitiesOfClass(Player.class, detectionArea).isEmpty()){
+        AABB detectionArea = new AABB(pos).inflate(radius);
+        List<Player> players = world.getEntitiesOfClass(
+                Player.class, detectionArea
+        );
+        if (players.isEmpty()) {
             return 0;
-        } else{
-            return 15;
         }
-    }
-
-}
+        Player player = players.get(0);
+        double distance = Math.sqrt(
+                player.distanceToSqr(Vec3.atCenterOf(pos))
+        );
+        return Math.max(1, Math.min(15,
+                (int) Math.ceil(15 * (1 - distance / radius))
+        ));
+    }}
